@@ -14,7 +14,10 @@ jobs:
       contents: read
       pull-requests: write
     uses: .github/workflows/03-build-pylint.yml
-
+    with:
+      python-version: "3.8"
+      pipeline-runner: "ubuntu-latest"
+        
   powershell-lint:
     name: powershell-lint
     permissions:
