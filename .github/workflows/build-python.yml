@@ -2,7 +2,7 @@ on:
   push: 
     branches: [ main ] 
     paths: 
-    - './runbooks/python/**' 
+    - 'fact.py' 
     - 'lint.py' 
 jobs: 
   build: 
