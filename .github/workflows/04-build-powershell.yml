@@ -1,15 +1,7 @@
 name: Build powershell script - PSScriptAnalyzer
 
 on:
-  push:
-    branches: [ "main" ]
-    paths:
-      - "runbooks/powershell/**"
-  
-  workflow_dispatch:
-
-permissions:
-  contents: read
+ workflow_call:
 
 jobs:
   build:
