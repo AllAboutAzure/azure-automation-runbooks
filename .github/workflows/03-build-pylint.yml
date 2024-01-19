@@ -1,21 +1,24 @@
 name: Build pipeline code check - pylint
 
 on: 
-  push: 
-    branches: [ main ] 
-    paths: 
-    - 'runbooks/python/**' 
-  workflow_dispatch:
-
+   workflow_call:
+    inputs:
+      python-version:
+        type: string
+        default: "3.8"
+      pipeline-runner:
+        type: string
+        default: "ubuntu-latest"
+        
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{inputs.pipeline-runner}}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.8x
       uses: actions/setup-python@v3
       with:
-        python-version: "3.8"
+        python-version: ${{inputs.python-version}}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
