@@ -1,22 +1,29 @@
-name: Python Runbooks
+name: Deploy-Automation-Runbooks
 
 on: 
   push: 
     branches: [ main ] 
     paths: 
-    - 'runbooks/python/**' 
+    - 'runbooks/**' 
   workflow_dispatch:
 
 jobs:
   python-lint:
-    name: python lint
+    name: python-lint
     permissions:
       contents: read
       pull-requests: write
     uses: .github/workflows/03-build-pylint.yml
+
+  powershell-lint:
+    name: powershell-lint
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: .github/workflows/04-build-powershell.yml
     
   deploy-runbooks:
-    name: deploy python runbooks
+    name: deploy-runbooks
     permissions:
       contents: read
       pull-requests: write
