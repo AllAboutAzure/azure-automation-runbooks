@@ -1,19 +1,11 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-#
-# https://github.com/microsoft/action-psscriptanalyzer
-# For more information on PSScriptAnalyzer in general, see
-# https://github.com/PowerShell/PSScriptAnalyzer
-
 name: Build powershell script - PSScriptAnalyzer
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    paths:
+      - "runbooks/powershell/**"
+  
   workflow_dispatch:
 
 permissions:
@@ -39,10 +31,3 @@ jobs:
           recurse: true
           # Include your own basic security rules. Removing this option will run all the rules
           includeRule: '"PSAvoidGlobalAliases", "PSAvoidUsingConvertToSecureStringWithPlainText"'
-          output: results.sarif
-
-      # Upload the SARIF file generated in the previous step
-      - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: results.sarif
