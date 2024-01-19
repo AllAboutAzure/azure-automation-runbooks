@@ -1,4 +1,4 @@
-name: Pylint
+name: Build pipeline code check - pylint
 
 on: 
   push: 
