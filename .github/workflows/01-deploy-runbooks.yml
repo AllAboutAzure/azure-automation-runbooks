@@ -2,9 +2,10 @@ name: Deploy-Automation-Runbooks
 
 on: 
   push: 
-    branches: [ main ] 
+    branches: 
+     - main 
     paths: 
-    - 'runbooks/**' 
+     - 'runbooks/**' 
   workflow_dispatch:
 
 jobs:
