@@ -46,16 +46,20 @@ name: 'Terraform Deployment'
 
 on:
   workflow_call:
+     inputs:
+       working_directory:
+         type: string
 
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
+        working-directory: ${{ inputs.working_directory }}
         shell: bash
 
     steps:
