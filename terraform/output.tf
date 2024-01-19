@@ -4,5 +4,5 @@ output "runbooks-created" {
     name    = val.name
     runbookType = val.runbook_type
   } }
-  descriptions = "details of the runbooks created"
+  description = "details of the runbooks created"
 }
